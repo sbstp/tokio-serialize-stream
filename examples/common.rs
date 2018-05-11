@@ -1,5 +1,5 @@
 #[derive(Deserialize, Serialize, Debug)]
 pub enum Message {
-    Hello,
+    Hello(String),
     GoodBye,
 }

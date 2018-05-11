@@ -13,8 +13,8 @@ use std::ops::{Deref, DerefMut};
 
 use bytes::{Buf, BufMut, BytesMut};
 use futures::{Async, Poll};
-use tokio_io::AsyncRead;
 use tokio_io::codec;
+use tokio_io::AsyncRead;
 
 const HEADER_SIZE: usize = 4;
 
@@ -48,7 +48,7 @@ where
 
             if src[HEADER_SIZE..].len() >= msg_size {
                 src.advance(HEADER_SIZE); // skip header, must not deserialize
-                let mut buf = src.split_to(msg_size);
+                let buf = src.split_to(msg_size);
                 // println!("split buf size {}", buf.len());
                 return Ok(Some(bincode::deserialize(&buf)?));
             }
