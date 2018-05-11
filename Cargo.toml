@@ -1,0 +1,15 @@
+[package]
+name = "tokio-serialize-stream"
+version = "0.1.0"
+authors = ["Simon <git@sbstp.ca>"]
+
+[dependencies]
+bincode = "1"
+bytes = "0.4"
+futures = "0.1"
+serde = "1"
+tokio = "0.1"
+tokio-io = "0.1"
+
+[dev-dependencies]
+serde_derive = "1"
