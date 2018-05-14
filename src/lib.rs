@@ -66,6 +66,7 @@ where
 
     fn encode(&mut self, item: Self::Item, dst: &mut BytesMut) -> Result<(), Self::Error> {
         let msg_size = bincode::serialized_size(&item)?;
+        dst.reserve(HEADER_SIZE + (msg_size as usize));
         dst.put_u32_be(msg_size as u32);
         bincode::serialize_into(dst.writer(), &item)?;
         Ok(())
